@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-size: 14px;
+    }
+    .board-items {
+      padding: 12.5px;
+    }
+    .board-items__header {
+      margin-bottom:15px;
+    }
+    .board-items__header h2 {
+      font-size: 16px;
+
+      font-weight: bold;
+    }
+    .board-items__header p {
+      font-size: 12px;
+      color:#333
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .swiper-container {
+        position: relative;
+        margin:0 -12.5px;
+    }
+    .swiper-slide {
+      position: relative;
+      height: 100px;
+      overflow:hidden;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .swiper-slide:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width:100%;
+      height:100%;
+      background-color:rgba(0,0,0,0.4);
+      content: "";
+    }
+
+    .swiper__tab {
+      position: relative;
+      bottom: 40px;
+      left: 0;
+      z-index:1;
+    }
+    .swiper__tab ul {
+      white-space: nowrap;
+      font-size: 0;
+      overflow-x:auto;
+    }
+    .swiper__tab ul .swiper-pagination-switch {
+      display: inline-block;
+      font-size: 14px;
+      color:#eee;
+      padding:10px 0;
+      margin-right:15px;
+
+    }
+    li.swiper-pagination-switch.active {font-weight: bold;}
+    .module__content {
+      white-space: nowrap;
+      font-size: 0;
+      overflow-x:auto;
+    }
+    .module__content li {
+      display: inline-block;
+      position: relative;
+      width:100px;
+      margin-right: 15px;
+    }
+    .module__content li p {
+      padding: 5px;
+      border: 1px solid #eee;
+      font-size: 14px;
+    }
+    .module__content li:before {
+      content: "1";
+      display: block;
+      position: absolute;
+      font-size: 14px;
+      color:#fff;
+      top: 0;
+      left: 0;
+      width: 22px;
+      height: 22px;
+      text-align: center;
+      background-color: #009ac8;
+      line-height: 21px;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+  <script>
+  $(function(){
+    var tabIndex;
+  	//Main Swiper
+  	var swiper = new Swiper('.swiper-container', {
+  		loop:false,
+      speed:600,
+
+  	});
+    swiper.on('slideChangeStart', function (swiper) {
+      $('.swiper-pagination-switch').removeClass('active')
+      $('.swiper-pagination-switch').eq(swiper.activeIndex).addClass('active');
+
+      console.log('ajax를 활용해서 비동기식으로 데이터 처리 : ' + swiper.activeIndex + "번 째 데이터를 가져온다.");
+    });
+      //navigation
+      $('.swiper-pagination-switch').click(function(){
+          swiper.slideTo($(this).index());
+          $('.swiper-pagination-switch').removeClass('active');
+  		    $(this).addClass('active')
+      })
+
+    $('.swiper-pagination-switch').click(function() {
+
+      console.log('ajax를 활용해서 비동기식으로 데이터 처리 : ' + $(".swiper-pagination-switch.active").index() + "번 째 데이터를 가져온다.");
+    })
+    console.log(tabIndex);
+  })
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="board-items">
+      <div class="board-items__header">
+        <h2>인공지능이 추천하는 모듈</h2>
+        <p>인공지능이 뽑는 방송 기여도 스타</p>
+      </div>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="https://image.mycelebs.com/vertical_finder/thum/620.jpg?20161220182513" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://image.mycelebs.com/vertical_finder/thum/621.jpg?20161220182305" alt="">
+            </div>
+        </div>
+      </div>
+      <div class="swiper__tab">
+        <ul>
+            <li class='swiper-pagination-switch active'>신나는</li>
+            <li class='swiper-pagination-switch'>화나는</li>
+        </ul>
+      </div>
+        <ul class="module__content">
+          <li>
+            <img src="http://image.celebtide.com/celeb/sq/938_sq_01.jpg" alt="">
+            <p>지민</p>
+          </li>
+        </ul>
+    </div>
+  </div>
+</body>
+</html>
