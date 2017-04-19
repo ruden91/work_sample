@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Accordion menu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .accordion__menu {
+      width: 360px;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+    .accordion__title {
+      cursor: pointer;
+      position: relative;
+      height: 80px;
+      background-repeat:no-repeat;
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+    .accordion__title--1 {
+      background-image: url('https://image.mycelebs.com/vertical_finder/thum/623.jpg?20161220182756');
+    }
+    .accordion__title--2 {
+      background-image: url('https://image.mycelebs.com/vertical_finder/thum/624.jpg?20161220182711');
+    }
+    .accordion__title--3 {
+      background-image: url('https://image.mycelebs.com/vertical_finder/thum/631.png?20170223134339');
+    }
+    .accordion__title--4 {
+      background-image: url('https://image.mycelebs.com/vertical_finder/thum/632.jpg?20161223030802');
+    }
+    .accordion__title--5 {
+      background-image: url('https://image.mycelebs.com/vertical_finder/thum/634.jpg?20161223031346');
+    }
+    .accordion__title:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width:100%;
+      height: 100%;
+      background-color:rgba(0,0,0,0.6);
+      z-index:1;
+    }
+    .accordion__title p {
+      font-size: 14px;
+      color:#fff;
+      z-index:2;
+      letter-spacing:2px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .accordion__content {
+      padding: 10px;
+      border:1px solid #eee;
+      display: none;
+    }
+    .accordion__content p {
+      font-size: 12px;
+      color:#333;
+      margin: 10px 0;
+    }
+    .accordion__content a {
+      text-decoration: none;
+      text-align: center;
+      color: #fff;
+      width: 100%;
+      display: block;
+      padding: 7px 0;
+      border:1px solid #6536D7;
+      border-radius: 10px;
+      background-color: #6536D7;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    $(function() {
+      $(".accordion__title").click(function(e) {
+        e.preventDefault();
+        $(".accordion__content").not($(this).siblings('.accordion__content')).slideUp();
+        $(this).siblings('.accordion__content').slideToggle();
+
+      })
+    })
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="accordion__menu">
+      <div class="accordion__item">
+        <div class="accordion__title accordion__title--1">
+          <p>영화</p>
+        </div>
+        <div class="accordion__content">
+          <p>낮은 도수, 레드와인, 깔끔한 등의 다양한 필터로 내 취향에 맞는 맥주를 찾아보세요.</p>
+          <a href="#">취향 검색하기</a>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <div class="accordion__title accordion__title--2">
+          <p>게임</p>
+        </div>
+        <div class="accordion__content">
+          <p>낮은 도수, 레드와인, 깔끔한 등의 다양한 필터로 내 취향에 맞는 맥주를 찾아보세요.</p>
+          <a href="#">취향 검색하기</a>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <div class="accordion__title accordion__title--3">
+          <p>감동적인</p>
+        </div>
+        <div class="accordion__content">
+          <p>낮은 도수, 레드와인, 깔끔한 등의 다양한 필터로 내 취향에 맞는 맥주를 찾아보세요.</p>
+          <a href="#">취향 검색하기</a>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <div class="accordion__title accordion__title--4">
+          <p>스릴있는</p>
+        </div>
+        <div class="accordion__content">
+          <p>낮은 도수, 레드와인, 깔끔한 등의 다양한 필터로 내 취향에 맞는 맥주를 찾아보세요.</p>
+          <a href="#">취향 검색하기</a>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <div class="accordion__title accordion__title--5">
+          <p>졸리다</p>
+        </div>
+        <div class="accordion__content">
+          <p>낮은 도수, 레드와인, 깔끔한 등의 다양한 필터로 내 취향에 맞는 맥주를 찾아보세요.</p>
+          <a href="#">취향 검색하기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
