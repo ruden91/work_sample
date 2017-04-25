@@ -88,8 +88,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script>
     $(function() {
-      $(".accordion__title").click(function(e) {
-        e.preventDefault();
+      $(".accordion__title").bind('click', function() {
         $(".accordion__content").not($(this).siblings('.accordion__content')).slideUp();
         $(this).siblings('.accordion__content').slideToggle();
 

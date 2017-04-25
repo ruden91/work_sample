@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  body {
+    color: #2c3e50;
+    background: #ecf0f1;
+  }
+  .wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .wrapper:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+
+  /* Acordeon styles */
+  .tab {
+    position: relative;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+  label {
+    font-size: 14px;
+    position: relative;
+    display: block;
+    padding: 0 0 0 1em;
+    background-image: url('./img/thumbnail_1.PNG');
+    background-size: cover;
+    background-position: 50% 40%;
+    height: 70px;
+    cursor: pointer;
+    transition: all .35s ease-in-out;
+  }
+  label.is-active {
+    height: 140px;
+    font-size: 20px;
+  }
+  label span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .tab-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .45s;
+  }
+  .blue .tab-content {
+    background: #3498db;
+  }
+
+  /* :checked */
+  input:checked ~ .tab-content {
+    max-height: 15em;
+  }
+
+  /* Icon */
+  /*label:after {
+    position: absolute;
+    top: 50%;
+    left: 47%;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+  }
+  input[type=checkbox] + label::after {
+    content: "+";
+  }
+  input[type=radio] + label::after {
+    content: "\02C5";
+  }
+  input[type=checkbox]:checked + label::after {
+    transform: rotate(315deg);
+  }
+  input[type=radio]:checked + label::after {
+    transform: rotateX(180deg);
+  }*/
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+  <script>
+    $(function() {
+      $('.board-items__tab-first-input').attr('checked', true);
+      $('.board-items__tab-first').addClass('is-active');
+
+      $('.tab').click(function() {
+        const $label = $('.tab').children('label');
+        const $this = $(this).find('label');
+
+        $label.removeClass('is-active');
+        $this.addClass('is-active');
+      })
+    })
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="half">
+      <div class="tab blue">
+        <input class="board-items__tab-first-input" id="tab-four" type="radio" name="tabs2">
+        <label class="board-items__tab-first" for="tab-four">
+          <span>드라마</span>
+        </label>
+        <div class="tab-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
+        </div>
+      </div>
+      <div class="tab blue">
+        <input id="tab-five" type="radio" name="tabs2">
+        <label for="tab-five">
+          <span>시사</span>
+        </label>
+        <div class="tab-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
+        </div>
+      </div>
+      <div class="tab blue">
+        <input id="tab-six" type="radio" name="tabs2">
+        <label for="tab-six">
+          <span>뉴스</span>
+        </label>
+        <div class="tab-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
+        </div>
+      </div>
+      <div class="tab blue">
+        <input id="tab-seven" type="radio" name="tabs2">
+        <label for="tab-seven">
+          <span>뉴스</span>
+        </label>
+        <div class="tab-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
+        </div>
+      </div>
+      <div class="tab blue">
+        <input id="tab-eight" type="radio" name="tabs2">
+        <label for="tab-eight">
+          <span>뉴스</span>
+        </label>
+        <div class="tab-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
