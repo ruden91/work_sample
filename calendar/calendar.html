@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>JavaScript calendar</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(function() {
+  function Calendar() {
+
+    // 변수 정의
+    var htmlContent = "";
+    var febNumberOfDay = "";
+    var counter = 1;
+
+    var dateNow = new Date();
+    var month = dateNow.getMonth();
+
+    var nextMonth = month + 1;
+    var prevMonth = month -1;
+    var day = dateNow.getDate();
+    var year = dateNow.getFullYear();
+
+    // 2월 day check
+    if (month == 1){
+       if ( (year%100!=0) && (year%4==0) || (year%400==0)){
+         febNumberOfDay = 29;
+       }else{
+         febNumberOfDay = 28;
+       }
+    }
+
+    // 월, 일 설정
+    var monthNames = ["January","February","March","April","May","June","July","August","September","October","November", "December"];
+    var dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday", "Saturday"];
+    var dayPerMonth = ["31", ""+ febNumberOfDay +"","31","30","31","30","31","31","30","31","30","31"]
+
+    var nextDate = new Date(nextMonth +' 1 ,'+year);
+    var weekdays= nextDate.getDay();
+    var weekdays2 = weekdays;
+    var numOfDays = dayPerMonth[month];
+
+    while (weekdays>0){
+      htmlContent += "<td class='monthPre'></td>";
+
+      weekdays--;
+    }
+
+    while (counter <= numOfDays){
+        // When to start new line.
+       if (weekdays2 > 6){
+           weekdays2 = 0;
+           htmlContent += "</tr><tr>";
+        }
+
+       if (counter == day){
+           htmlContent +="<td class='dayNow'>"+counter+"</td>";
+       }else{
+           htmlContent +="<td class='monthNow'>"+counter+"</td>";
+       }
+
+       weekdays2++;
+       counter++;
+    }
+
+    var calendarBody = "<table class='calendar'> <tr class='monthNow'><th colspan='7'>"
+    +monthNames[month]+" "+ year +"</th></tr>";
+    calendarBody +="<tr class='dayNames'>  <td>Sun</td>  <td>Mon</td> <td>Tues</td>"+
+    "<td>Wed</td> <td>Thurs</td> <td>Fri</td> <td>Sat</td> </tr>";
+    calendarBody += "<tr>";
+    calendarBody += htmlContent;
+    calendarBody += "</tr></table>";
+
+    // set the content of div .
+    $('#calendar').append(calendarBody);
+  }
+
+  var calendar = new Calendar();
+
+  $('.calendar').find('td').click(function() {
+    $(this).closest('tr').after('<tr class="content">news area</tr>')
+  })
+})
+
+</script>
+</head>
+
+<body>
+
+<div id="calendar"></div>
+</body>
+<style>
+.content {
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  padding: 10px;
+  height: 50px;
+}
+.calendar {
+  margin: 0 auto;
+}
+.monthPre{
+ padding:5px;
+ text-align: center;
+}
+.monthNow{
+ color: blue;
+ text-align: center;
+}
+.dayNow{
+ border: 2px solid black;
+ color: #FF0000;
+ text-align: center;
+}
+.calendar td{
+ htmlContent: 2px;
+ width: 40px;
+}
+.monthNow th{
+ background-color: #000000;
+ color: #FFFFFF;
+ text-align: center;
+}
+.dayNames{
+ color: #222;
+ text-align: center;
+}
+
+</style>
+</html>
